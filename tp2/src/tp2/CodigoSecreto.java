@@ -11,12 +11,18 @@ package tp2;
 public class CodigoSecreto extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CodigoSecreto.class.getName());
+    
+    private int contadorIntentos = 0;
 
     /**
      * Creates new form CodigoSecreto
      */
     public CodigoSecreto() {
         initComponents();
+        
+        java.util.Random random = new java.util.Random();
+        int num = random.nextInt(900)+ 100;
+        
     }
 
     /**
