@@ -13,6 +13,8 @@ public class CodigoSecreto extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CodigoSecreto.class.getName());
     
     private int contadorIntentos = 0;
+    private String codigoSecreto;
+    private int contadorAyudas = 0;
 
     /**
      * Creates new form CodigoSecreto
@@ -22,6 +24,13 @@ public class CodigoSecreto extends javax.swing.JFrame {
         
         java.util.Random random = new java.util.Random();
         int num = random.nextInt(900)+ 100;
+        
+        codigoSecreto = String.valueOf(num);
+        
+        jPassword1.setEchoChar('$');
+        jPassword2.setEchoChar('$');
+        jPassword3.setEchoChar('$');
+        
         
     }
 
@@ -44,19 +53,21 @@ public class CodigoSecreto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jtNumero = new javax.swing.JTextField();
         jpTrofeo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPassword1.setBackground(new java.awt.Color(153, 51, 255));
-        jPassword1.setText("aaa");
+        jPassword1.setBorder(null);
+        jPassword1.setEchoChar('$');
         jPassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPassword1ActionPerformed(evt);
             }
         });
 
+        jPassword2.setEditable(false);
         jPassword2.setBackground(new java.awt.Color(255, 255, 153));
-        jPassword2.setText("aaa");
         jPassword2.setToolTipText("");
         jPassword2.setMinimumSize(new java.awt.Dimension(68, 30));
         jPassword2.addActionListener(new java.awt.event.ActionListener() {
@@ -65,21 +76,26 @@ public class CodigoSecreto extends javax.swing.JFrame {
             }
         });
 
+        jPassword3.setEditable(false);
         jPassword3.setBackground(new java.awt.Color(153, 255, 153));
-        jPassword3.setText("aaa");
+        jPassword3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPassword3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpCodigoLayout = new javax.swing.GroupLayout(jpCodigo);
         jpCodigo.setLayout(jpCodigoLayout);
         jpCodigoLayout.setHorizontalGroup(
             jpCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpCodigoLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(jPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPassword3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jpCodigoLayout.setVerticalGroup(
             jpCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,13 +108,19 @@ public class CodigoSecreto extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jlMensaje.setText("Por favor, ingrese un número en cada casillero");
+        jlMensaje.setForeground(new java.awt.Color(255, 255, 153));
+        jlMensaje.setText("- Por favor, ingrese un número en cada casillero");
 
         jButton1.setBackground(new java.awt.Color(0, 204, 204));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Revelar");
 
         jtNumero.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtNumeroKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpTrofeoLayout = new javax.swing.GroupLayout(jpTrofeo);
         jpTrofeo.setLayout(jpTrofeoLayout);
@@ -111,11 +133,16 @@ public class CodigoSecreto extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jLabel1.setFont(new java.awt.Font("Pristina", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 153));
+        jLabel1.setText("Codigo  Secreto");
+
         jDesktopPane1.setLayer(jpCodigo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jlMensaje, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jtNumero, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jpTrofeo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -137,14 +164,20 @@ public class CodigoSecreto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jpTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12))))
+            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlMensaje)
+                .addComponent(jlMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
@@ -178,6 +211,17 @@ public class CodigoSecreto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPassword1ActionPerformed
 
+    private void jtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNumeroKeyTyped
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jtNumeroKeyTyped
+
+    private void jPassword3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPassword3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +250,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPasswordField jPassword1;
     private javax.swing.JPasswordField jPassword2;
     private javax.swing.JPasswordField jPassword3;
