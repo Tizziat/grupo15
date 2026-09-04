@@ -8,6 +8,7 @@ package tp2;
  *
  * @author tizzi
  */
+// agregar boton reinicio al final(chiche)
 public class CodigoSecreto extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CodigoSecreto.class.getName());
@@ -76,7 +77,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
 
         jPassword1.setEditable(false);
         jPassword1.setBackground(new java.awt.Color(153, 51, 255));
-        jPassword1.setBorder(null);
+        jPassword1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPassword1.setEchoChar('$');
         jPassword1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +88,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
         jPassword2.setEditable(false);
         jPassword2.setBackground(new java.awt.Color(255, 255, 153));
         jPassword2.setToolTipText("");
+        jPassword2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPassword2.setMinimumSize(new java.awt.Dimension(68, 30));
         jPassword2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +98,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
 
         jPassword3.setEditable(false);
         jPassword3.setBackground(new java.awt.Color(153, 255, 153));
+        jPassword3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPassword3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPassword3ActionPerformed(evt);
