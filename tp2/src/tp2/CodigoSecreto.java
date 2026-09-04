@@ -24,14 +24,31 @@ public class CodigoSecreto extends javax.swing.JFrame {
         
         java.util.Random random = new java.util.Random();
         int num = random.nextInt(900)+ 100;
-        
         codigoSecreto = String.valueOf(num);
         
+
+//        ENMASCARADO
         jPassword1.setEchoChar('$');
         jPassword2.setEchoChar('$');
         jPassword3.setEchoChar('$');
+
+
+//        DESENMASCARADO
+//        jPassword1.setEchoChar((char) 0);
+//        jPassword2.setEchoChar((char) 0);
+//        jPassword3.setEchoChar((char) 0);
         
+        jPassword1.setText(" ");
+        jPassword2.setText(" ");
+        jPassword3.setText(" ");
         
+        jPassword1.setText(String.valueOf(codigoSecreto.charAt(0)) );
+        jPassword2.setText(String.valueOf(codigoSecreto.charAt(1)) );
+        jPassword3.setText(String.valueOf(codigoSecreto.charAt(2)) );
+    
+    
+    
+    
     }
 
     /**
@@ -57,6 +74,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPassword1.setEditable(false);
         jPassword1.setBackground(new java.awt.Color(153, 51, 255));
         jPassword1.setBorder(null);
         jPassword1.setEchoChar('$');
@@ -115,7 +133,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Revelar");
 
-        jtNumero.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jtNumero.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtNumeroKeyTyped(evt);
@@ -212,10 +230,15 @@ public class CodigoSecreto extends javax.swing.JFrame {
     }//GEN-LAST:event_jPassword1ActionPerformed
 
     private void jtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNumeroKeyTyped
-        // TODO add your handling code here:
-        
-        
-        
+        // TODO add your handling code here:        
+     
+     String jtNumero = "000";
+     
+     if (jtNumero.setText(String.valueOf(jtNumero.charAt(0)) ){
+         
+         
+     };
+    
     }//GEN-LAST:event_jtNumeroKeyTyped
 
     private void jPassword3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword3ActionPerformed
