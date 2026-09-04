@@ -233,10 +233,13 @@ public class CodigoSecreto extends javax.swing.JFrame {
         // TODO add your handling code here:        
      
      String jtNumero = "000";
+     //String valor1 = jPassword1.setText(String.valueOf(codigoSecreto.charAt(0)));
+     char primerNum = codigoSecreto.charAt(0);
+     char primerNum1 = jtNumero.charAt(0);
      
-     if (jtNumero.setText(String.valueOf(jtNumero.charAt(0)) ){
-         
-         
+     
+     if (primerNum == primerNum1){
+        jPassword1.setEchoChar((char) 0);
      };
     
     }//GEN-LAST:event_jtNumeroKeyTyped
