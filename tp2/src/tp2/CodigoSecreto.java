@@ -230,18 +230,35 @@ public class CodigoSecreto extends javax.swing.JFrame {
     }//GEN-LAST:event_jPassword1ActionPerformed
 
     private void jtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNumeroKeyTyped
-        // TODO add your handling code here:        
-     
-     String jtNumero = "000";
-     //String valor1 = jPassword1.setText(String.valueOf(codigoSecreto.charAt(0)));
-     char primerNum = codigoSecreto.charAt(0);
-     char primerNum1 = jtNumero.charAt(0);
-     
-     
-     if (primerNum == primerNum1){
-        jPassword1.setEchoChar((char) 0);
-     };
-    
+        // TODO add your handling code here:  
+String input = jtNumero.getText() + evt.getKeyChar();
+    input = input.trim();
+
+    // SOLO evaluar si el usuario ya escribió exactamente 3 dígitos
+    // modificar el if (mensaje advertencia+999!!!)
+    if (input.length() == 3) {
+        contadorIntentos++;
+
+        char primerNum = codigoSecreto.charAt(0);
+        char primerNum1 = input.charAt(0);
+
+        char segundoNum = codigoSecreto.charAt(1);
+        char segundoNum1 = input.charAt(1);
+
+        char tercerNum = codigoSecreto.charAt(2);
+        char tercerNum1 = input.charAt(2);
+
+        if (primerNum == primerNum1) {
+            jPassword1.setEchoChar((char) 0);
+        }
+        if (segundoNum == segundoNum1) {
+            jPassword2.setEchoChar((char) 0); 
+        }
+        if (tercerNum == tercerNum1) {
+            jPassword3.setEchoChar((char) 0);
+        }
+    }
+
     }//GEN-LAST:event_jtNumeroKeyTyped
 
     private void jPassword3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword3ActionPerformed
