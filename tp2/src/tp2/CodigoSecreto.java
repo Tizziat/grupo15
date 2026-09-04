@@ -231,7 +231,7 @@ public class CodigoSecreto extends javax.swing.JFrame {
 
     private void jtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNumeroKeyTyped
         // TODO add your handling code here:  
-String input = jtNumero.getText() + evt.getKeyChar();
+    String input = jtNumero.getText() + evt.getKeyChar();
     input = input.trim();
 
     // SOLO evaluar si el usuario ya escribió exactamente 3 dígitos
