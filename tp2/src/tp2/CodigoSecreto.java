@@ -237,17 +237,18 @@ public class CodigoSecreto extends javax.swing.JFrame {
     String input = jtNumero.getText() + evt.getKeyChar();
     input = input.trim();
 
-    // SOLO evaluar si el usuario ya escribió exactamente 3 dígitos
-    // modificar el if (mensaje advertencia+999!!!)
+    // SOLO evaluar si el usuario ya escribió exactamente 3 dígitos    
     if (input.length() == 3) {
         
+        // validando que solo sean numeros, mensaje advertencia!
         if (!input.matches("\\d+")) {
             jlMensaje.setText("Por favor, ingresa exactamente 3 números.");
             return;
         }
         
         contadorIntentos++;
-
+        
+        // desenmascarando aciertos individuales
         char primerNum = codigoSecreto.charAt(0);
         char primerNum1 = input.charAt(0);
 
@@ -266,7 +267,22 @@ public class CodigoSecreto extends javax.swing.JFrame {
         if (tercerNum == tercerNum1) {
             jPassword3.setEchoChar((char) 0);
         }
+        
+        int intento = Integer.parseInt(input);
+        int codigo = Integer.parseInt(codigoSecreto);
+        
+        
+        
+        if (intento < codigo) { 
+            jlMensaje.setText("el número es mas alto que  " + intento);
+        } else if (intento > codigo)
+            jlMensaje.setText("el número es mas bajo que  " + intento);
+    
+        } else {
+            jlMensaje.setText("Has acertado el codigo secreto!!");
     }
+        
+    
 
     }//GEN-LAST:event_jtNumeroKeyTyped
 
