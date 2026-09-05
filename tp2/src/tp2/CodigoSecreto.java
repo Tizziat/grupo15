@@ -240,6 +240,12 @@ public class CodigoSecreto extends javax.swing.JFrame {
     // SOLO evaluar si el usuario ya escribió exactamente 3 dígitos
     // modificar el if (mensaje advertencia+999!!!)
     if (input.length() == 3) {
+        
+        if (!input.matches("\\d+")) {
+            jlMensaje.setText("Por favor, ingresa exactamente 3 números.");
+            return;
+        }
+        
         contadorIntentos++;
 
         char primerNum = codigoSecreto.charAt(0);
